@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Compiler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 h-screen flex flex-col">
+    <header class="bg-blue-600 text-white p-4">
+        <h1 class="text-2xl font-bold">Online Compiler</h1>
+    </header>
+
+    <main class="flex-grow flex p-4 gap-4">
+        <div class="w-1/2 flex flex-col">
+            <div class="flex justify-between">
+                <h2 class="text-xl font-semibold mb-2">Code Input</h2>
+                <div class="flex flex-col justify-center mb-2">
+                    <button id="compileBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                        Compile
+                    </button>
+                </div>
+            </div>
+            <textarea id="codeInput" class="flex-grow p-2 border border-gray-300 rounded-md resize-none font-mono"
+                placeholder="Enter your code here..."></textarea>
+            <div class="mt-2 space-y-2">
+                <button class="insert-btn bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="🧮">
+                    int
+                </button>
+                <button class="insert-btn bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded" data-insert="🛟">
+                    float
+                </button>
+                <button class="insert-btn bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded" data-insert="✅">
+                    bool
+                </button>
+                <button class="insert-btn bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded" data-insert="📄">
+                    string
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="➕">
+                    +
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="➖">
+                    -
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="✖️">
+                    *
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="➗">
+                    /
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="🪙">
+                    %
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="🙅">
+                    !
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="🤝">
+                    &&
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="🤷">
+                    ||
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="🟰">
+                    ==
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="🚫">
+                    !=
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="▶️">
+                    >
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="⏩">
+                    >=
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="◀️">
+                    <
+                </button>
+                <button class="insert-btn bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded" data-insert="⏪">
+                    <=
+                </button>
+                <button class="insert-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="🤔 🧎‍➡️🧎 🏃‍➡️&#10;&#9;&#10;🏃">
+                    if
+                </button>
+                <button class="insert-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="👇 🏃‍➡️&#10;&#9;&#10;🏃">
+                    else
+                </button>
+                <button class="insert-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="🔁 🧎‍➡️i 👉 1 ➡️ 10 👟 1🧎 🏃‍➡️&#10;&#9;&#10;🏃">
+                    for
+                </button>
+                <button class="insert-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="🌀 🧎‍➡️🧎 🏃‍➡️&#10;&#9;&#10;🏃">
+                    while
+                </button>
+                <button class="insert-btn bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="🍿 🧎‍➡️🧎 🏃‍➡️&#10;&#9;&#10;🏃">
+                    function
+                </button>
+                <button class="insert-btn bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="↩️">
+                    return
+                </button>
+                <button class="insert-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="✋">
+                    ;
+                </button>
+                <button class="insert-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded" data-insert="🔸">
+                    ,
+                </button>
+                <button class="insert-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded" data-insert="👉">
+                    =
+                </button>
+                <button class="insert-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded" data-insert="🧎‍➡️">
+                    (
+                </button>
+                <button class="insert-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded" data-insert="🧎">
+                    )
+                </button>
+                <button class="insert-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="🖨️🧎‍➡️🧎">
+                    print
+                </button>
+                <button class="insert-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="👍">
+                    true
+                </button>
+                <button class="insert-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="👎">
+                    false
+                </button>
+                <button class="insert-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-1 px-2 rounded"
+                    data-insert="🧵🧵">
+                    ""
+                </button>
+                <button class="insert-btn bg-pink-500 hover:bg-pink-600 text-white font-bold py-1 px-2 rounded" data-insert="💭">
+                    //
+                </button>
+            </div>
+        </div>
+
+        <div class="w-1/2 flex flex-col">
+            <h2 class="text-xl font-semibold mb-5">Output</h2>
+            <pre id="output" class="flex-grow p-2 mb-10 border border-gray-300 rounded-md bg-white overflow-auto"></pre>
+        </div>
+    </main>
+
+    <script>
+        const codeInput = document.getElementById('codeInput');
+        const compileBtn = document.getElementById('compileBtn');
+        const output = document.getElementById('output');
+        const insertBtns = document.querySelectorAll('.insert-btn');
+
+        compileBtn.addEventListener('click', () => {
+            const code = codeInput.value;
+            fetch('/compile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code: code })
+            })
+            .then(response => response.json())
+                .then(data => {
+                    output.textContent = data.output;
+                    if (data.isError) {
+                        output.classList.add('text-red-500');
+                    } else {
+                        output.classList.remove('text-red-500');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        insertBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const textToInsert = btn.getAttribute('data-insert');
+                insertAtCursor(codeInput, textToInsert);
+            });
+        });
+
+        function insertAtCursor(input, textToInsert) {
+            const start = input.selectionStart;
+            const end = input.selectionEnd;
+            const text = input.value;
+            const before = text.substring(0, start);
+            const after = text.substring(end);
+
+            input.value = before + textToInsert + after;
+            input.selectionStart = input.selectionEnd = start + textToInsert.length;
+            input.focus();
+        }
+
+        const textarea = document.getElementById('codeInput');
+
+            textarea.addEventListener('keydown', function (event) {
+                if (event.key === 'Tab') {
+                    event.preventDefault();
+                    const start = this.selectionStart;
+                    const end = this.selectionEnd;
+
+                    this.value = this.value.substring(0, start) + '\t' + this.value.substring(end);
+
+                    this.selectionStart = this.selectionEnd = start + 1;
+                }
+            });
+    </script>
+</body>
+
+</html>
